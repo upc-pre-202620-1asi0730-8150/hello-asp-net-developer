@@ -2,7 +2,7 @@
 
 ## Summary
 
-An ASP.NET Core application using Minimal APIs to greet developers.
+An ASP.NET Core REST API application to illustrate the use of Minimal APIs.
 
 ## Features
 
