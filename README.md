@@ -12,6 +12,15 @@ names.
 - **GET /greetings**: Retrieve a greeting with optional `firstName` and `lastName` query parameters.
 - **POST /greetings**: Create a greeting with a JSON request body containing `firstName` and `lastName`.
 
+## User Stories
+The user stories for this project can be found in the [docs/user-stories.md](docs/user-stories.md) document.
+
+## Class Diagram
+The class diagram for this project can be found in the [docs/class-diagram.md](docs/class-diagram.md) document.
+
+The following diagram shows the class hierarchy for the application:
+![class-diagram](https://plantuml.com/plantuml/proxy?src=)
+
 ## Prerequisites
 
 - .NET 9 SDK
