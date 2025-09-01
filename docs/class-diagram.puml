@@ -1,0 +1,40 @@
+@startuml
+
+package "Acme.Hello.Platform.Generic.Domain.Model.Entities" {
+  class Developer {
+    +Guid Id
+    +string FirstName
+    +string LastName
+    +string GetFullName()
+    +bool IsAnyNameEmpty()
+  }
+}
+
+package "Acme.Hello.Platform.Generic.Interfaces.REST.Assemblers" {
+  class DeveloperAssembler {
+    +static Developer? ToEntityFromRequest(GreetDeveloperRequest? request)
+  }
+  class GreetDeveloperAssembler {
+    +static GreetDeveloperResponse ToResponseFromEntity(Developer? developer)
+  }
+}
+
+package "Acme.Hello.Platform.Generic.Interfaces.REST.Resources" {
+  class GreetDeveloperRequest {
+    +string? FirstName
+    +string? LastName
+  }
+  class GreetDeveloperResponse {
+    +Guid? Id
+    +string? FullName
+    +string Message
+    +GreetDeveloperResponse(string message)
+  }
+}
+
+DeveloperAssembler ..> Developer : creates
+DeveloperAssembler ..> GreetDeveloperRequest : uses
+GreetDeveloperAssembler ..> Developer : uses
+GreetDeveloperAssembler ..> GreetDeveloperResponse : creates
+
+@enduml
