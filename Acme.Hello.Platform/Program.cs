@@ -21,8 +21,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-
-/// <summary>
+// <summary>
 // /// Defines the GET endpoint for retrieving a greeting.
 // /// </summary>
 // /// <param name="firstName">The optional first name of the developer.</param>
@@ -36,8 +35,7 @@ app.MapGet("/greetings", (string? firstName, string? lastName) =>
         var response = GreetDeveloperAssembler.ToResponseFromEntity(developer);
         return Results.Ok(response);
     })
-    .WithName("GetGreeting")
-    .WithOpenApi();
+    .WithName("GetGreeting");
     
 // <summary>
 // /// Defines the POST endpoint for creating a greeting.
@@ -50,7 +48,6 @@ app.MapPost("/greetings", (GreetDeveloperRequest request) =>
         var response = GreetDeveloperAssembler.ToResponseFromEntity(developer);
         return Results.Created("/greetings", response);
     })
-    .WithName("CreateGreeting")
-    .WithOpenApi();
+    .WithName("CreateGreeting");
 
 app.Run();
