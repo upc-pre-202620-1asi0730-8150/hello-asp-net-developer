@@ -19,7 +19,7 @@ The user stories for this project can be found in the [docs/user-stories.md](doc
 The class diagram for this project can be found in the [docs/class-diagram.md](docs/class-diagram.md) document.
 
 The following diagram shows the class hierarchy for the application:
-![class-diagram](https://plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0730-sandbox/hello-asp-net-developer/refs/heads/master/docs/class-diagram.puml?token=GHSAT0AAAAAADVFVJLBW33IOK7XNHCXD2342ORXPAQ)
+![class-diagram](https://plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0730-sandbox/hello-asp-net-developer/refs/heads/master/docs/class-diagram.puml?token=GHSAT0AAAAAADVFVJLARKVA3NWBSSNXPMTG2ORXSAA)
 
 ## Prerequisites
 
