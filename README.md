@@ -23,7 +23,7 @@ The following diagram shows the class hierarchy for the application:
 
 ## Prerequisites
 
-- .NET 9 SDK
+- .NET 10 SDK
 - Swashbuckle.AspNetCore (for API documentation)
 
 ## Getting Started
