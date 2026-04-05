@@ -16,10 +16,10 @@ names.
 The user stories for this project can be found in the [docs/user-stories.md](docs/user-stories.md) document.
 
 ## Class Diagram
-The class diagram for this project can be found in the [docs/class-diagram.md](docs/class-diagram.md) document.
+The class diagram for this project can be found in the [docs/class-diagram.puml](docs/class-diagram.puml) document.
 
 The following diagram shows the class hierarchy for the application:
-![class-diagram](https://plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0730-sandbox/hello-asp-net-developer/refs/heads/master/docs/class-diagram.puml?token=GHSAT0AAAAAADVFVJLARKVA3NWBSSNXPMTG2ORXSAA)
+![class-diagram](https://plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/upc-pre-202610-1asi0730-sandbox/hello-asp-net-developer/refs/heads/master/docs/class-diagram.puml?token=GHSAT0AAAAAADVFVJLB6KGI6XEMQZEQIS422ORXURQ)
 
 ## Prerequisites
 
