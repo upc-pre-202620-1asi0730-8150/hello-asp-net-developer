@@ -6,11 +6,10 @@ An ASP.NET Core REST API application to illustrate the use of Minimal APIs.
 
 ## Features
 
-The API supports both GET and POST requests to generate personalized greetings based on a developer's first and last
-names.
+The API supports GET and POST requests for greeting metrics and personalized developer greetings.
 
-- **GET /greetings**: Retrieve a greeting with optional `firstName` and `lastName` query parameters.
-- **POST /greetings**: Create a greeting with a JSON request body containing `firstName` and `lastName`.
+- **GET /api/v1/greetings**: Retrieve the total count of greetings made to any developer.
+- **POST /api/v1/greetings**: Create a personalized greeting with a JSON request body containing `firstName` and `lastName`.
 
 ## User Stories
 The user stories for this project can be found in the [docs/user-stories.md](docs/user-stories.md) document.

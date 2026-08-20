@@ -20,6 +20,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Simplified `GetGreetingCountResponse` resource record by decoupling it from domain entities.
 - Modularized endpoint route registrations from `Program.cs` into `MapGreetingEndpoints` extension method.
 - Cleaned up XML route comments in interface layer.
+- Updated `docs/class-diagram.puml` with `Profiles` bounded context namespaces, `PersonName` Value Object, and `IGreetingCounter` service.
+- Synchronized `docs/user-stories.md` and `README.md` with `/api/v1/greetings` endpoint signatures and greeting metrics behavior.
 
 ## [1.1.0] - 2026-08-19
 

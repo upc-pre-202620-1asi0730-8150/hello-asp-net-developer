@@ -1,8 +1,18 @@
 @startuml
 
-package "Acme.Hello.Platform.Generic.Domain.Model.Entities" {
+package "Acme.Hello.Platform.Profiles.Domain.Model.ValueObjects" {
+  class PersonName <<record>> {
+    +string FirstName
+    +string LastName
+    +string FullName
+    +bool IsAnyNameEmpty()
+  }
+}
+
+package "Acme.Hello.Platform.Profiles.Domain.Model.Entities" {
   class Developer {
     +Guid Id
+    +PersonName Name
     +string FirstName
     +string LastName
     +string GetFullName()
@@ -10,7 +20,22 @@ package "Acme.Hello.Platform.Generic.Domain.Model.Entities" {
   }
 }
 
-package "Acme.Hello.Platform.Generic.Interfaces.REST.Assemblers" {
+package "Acme.Hello.Platform.Profiles.Domain.Services" {
+  interface IGreetingCounter {
+    +int Count
+    +void Increment()
+  }
+}
+
+package "Acme.Hello.Platform.Profiles.Domain.Services.Internal" {
+  class GreetingCounter {
+    -int _count
+    +int Count
+    +void Increment()
+  }
+}
+
+package "Acme.Hello.Platform.Profiles.Interfaces.Rest.Assemblers" {
   class DeveloperAssembler {
     +static Developer? ToEntityFromRequest(GreetDeveloperRequest? request)
   }
@@ -19,7 +44,7 @@ package "Acme.Hello.Platform.Generic.Interfaces.REST.Assemblers" {
   }
 }
 
-package "Acme.Hello.Platform.Generic.Interfaces.REST.Resources" {
+package "Acme.Hello.Platform.Profiles.Interfaces.Rest.Resources" {
   class GreetDeveloperRequest {
     +string? FirstName
     +string? LastName
@@ -30,11 +55,29 @@ package "Acme.Hello.Platform.Generic.Interfaces.REST.Resources" {
     +string Message
     +GreetDeveloperResponse(string message)
   }
+  class GetGreetingCountResponse <<record>> {
+    +int GreetingCount
+  }
 }
+
+package "Acme.Hello.Platform.Profiles.Interfaces.Rest" {
+  class GreetingEndpoints <<static>> {
+    +static IEndpointRouteBuilder MapGreetingEndpoints(this IEndpointRouteBuilder app)
+  }
+}
+
+Developer *-- PersonName : contains
+GreetingCounter ..|> IGreetingCounter : implements
 
 DeveloperAssembler ..> Developer : creates
 DeveloperAssembler ..> GreetDeveloperRequest : uses
+DeveloperAssembler ..> PersonName : creates
 GreetDeveloperAssembler ..> Developer : uses
 GreetDeveloperAssembler ..> GreetDeveloperResponse : creates
+
+GreetingEndpoints ..> IGreetingCounter : uses
+GreetingEndpoints ..> DeveloperAssembler : uses
+GreetingEndpoints ..> GreetDeveloperAssembler : uses
+GreetingEndpoints ..> GetGreetingCountResponse : creates
 
 @enduml
