@@ -22,6 +22,11 @@ public class Developer
     public string LastName { get; }
 
     /// <summary>
+    /// Gets or sets the number of greetings made to any developer. 
+    /// </summary>
+    public static int GreetingCount { get; private set; } = 0;
+    
+    /// <summary>
     /// Initializes a new instance of the Developer class with trimmed names.
     /// </summary>
     /// <param name="firstName">The developer's first name, may be null or contain whitespace.</param>
@@ -43,4 +48,9 @@ public class Developer
     /// </summary>
     /// <returns>True if any name is empty, false otherwise.</returns>
     public bool IsAnyNameEmpty() => string.IsNullOrEmpty(FirstName) || string.IsNullOrEmpty(LastName);
+    
+    /// <summary>
+    /// Increments the greeting count for this developer.
+    /// </summary>
+    public void IncrementGreetingCount() => GreetingCount++;
 }
