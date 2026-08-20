@@ -53,7 +53,8 @@ public class PersonNameTests
     [InlineData(null, null)]
     [InlineData("", "")]
     [InlineData("   ", "   ")]
-    public void IsAnyNameEmpty_WhenEitherOrBothNamesAreEmptyOrWhitespace_ReturnsTrue(string? firstName, string? lastName)
+    public void IsAnyNameEmpty_WhenEitherOrBothNamesAreEmptyOrWhitespace_ReturnsTrue(string? firstName,
+        string? lastName)
     {
         // Arrange & Act
         var name = new PersonName(firstName!, lastName!);

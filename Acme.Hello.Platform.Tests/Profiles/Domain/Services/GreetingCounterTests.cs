@@ -42,14 +42,14 @@ public class GreetingCounterTests
         const int incrementsPerThread = 1000;
 
         // Act
-        Task[] tasks = [.. Enumerable.Range(0, numberOfThreads)
-            .Select(_ => Task.Run(() =>
-            {
-                for (int j = 0; j < incrementsPerThread; j++)
+        Task[] tasks =
+        [
+            .. Enumerable.Range(0, numberOfThreads)
+                .Select(_ => Task.Run(() =>
                 {
-                    counter.Increment();
-                }
-            }))];
+                    for (var j = 0; j < incrementsPerThread; j++) counter.Increment();
+                }))
+        ];
 
         Task.WaitAll(tasks);
 
