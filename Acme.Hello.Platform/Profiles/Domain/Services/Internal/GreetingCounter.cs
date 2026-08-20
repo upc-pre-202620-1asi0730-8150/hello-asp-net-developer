@@ -1,4 +1,4 @@
-namespace Acme.Hello.Platform.Profiles.Domain.Services;
+namespace Acme.Hello.Platform.Profiles.Domain.Services.Internal;
 
 /// <summary>
 /// In-memory, thread-safe implementation of the <see cref="IGreetingCounter"/> service.
