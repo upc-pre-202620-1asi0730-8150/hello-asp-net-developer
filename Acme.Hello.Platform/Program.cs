@@ -31,7 +31,8 @@ app.MapGet("/api/v1/greetings", () =>
         var response = new GetGreetingCountResponse();
         return Results.Ok(response);
     })
-    .WithName("GetGreetingCount");
+    .WithName("GetGreetingCount")
+    .WithSummary("Retrieves the count of greetings made to any developer.");
     
 // <summary>
 // /// Defines the POST endpoint for creating a greeting.
@@ -46,6 +47,7 @@ app.MapPost("/api/v1/greetings", (GreetDeveloperRequest request) =>
         return Results.Created("/api/v1/greetings", response);
     })
     .WithName("CreateGreeting")
-    .Produces<GreetDeveloperResponse>(StatusCodes.Status201Created);
+    .Produces<GreetDeveloperResponse>(StatusCodes.Status201Created)
+    .WithSummary("Creates a greeting for a developer.");
 
 app.Run();
