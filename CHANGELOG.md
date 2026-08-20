@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+- `PersonName` Value Object in domain model to encapsulate name behavior, validation, and trimming.
+
+### Changed
+- Refactored `Developer` entity to encapsulate `PersonName` Value Object.
+- Updated `DeveloperAssembler` to leverage `PersonName` for name validation and creation.
+
 ## [1.1.0] - 2026-08-19
 
 ### Added

@@ -1,4 +1,5 @@
 using Acme.Hello.Platform.Profiles.Domain.Model.Entities;
+using Acme.Hello.Platform.Profiles.Domain.Model.ValueObjects;
 using Acme.Hello.Platform.Profiles.Interfaces.Rest.Resources;
 
 namespace Acme.Hello.Platform.Profiles.Interfaces.Rest.Assemblers;
@@ -17,10 +18,17 @@ public static class DeveloperAssembler
     /// <returns>A Developer entity if the request is valid, null otherwise.</returns>
     public static Developer? ToEntityFromRequest(GreetDeveloperRequest? request)
     {
-        if (request == null || string.IsNullOrWhiteSpace(request.FirstName) || string.IsNullOrWhiteSpace(request.LastName))
+        if (request == null)
         {
             return null;
         }
-        return new Developer(request.FirstName, request.LastName);
+
+        var personName = new PersonName(request.FirstName, request.LastName);
+        if (personName.IsAnyNameEmpty())
+        {
+            return null;
+        }
+
+        return new Developer(personName);
     }
 }
