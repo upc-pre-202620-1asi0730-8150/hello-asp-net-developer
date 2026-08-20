@@ -1,6 +1,6 @@
 using Acme.Hello.Platform.Profiles.Domain.Model.Entities;
-using Acme.Hello.Platform.Profiles.Interfaces.REST.Assemblers;
-using Acme.Hello.Platform.Profiles.Interfaces.REST.Resources;
+using Acme.Hello.Platform.Profiles.Interfaces.Rest.Assemblers;
+using Acme.Hello.Platform.Profiles.Interfaces.Rest.Resources;
 
 var builder = WebApplication.CreateBuilder(args);
 

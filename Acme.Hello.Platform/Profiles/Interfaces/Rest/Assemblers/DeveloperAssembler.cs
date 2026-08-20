@@ -1,7 +1,7 @@
 using Acme.Hello.Platform.Profiles.Domain.Model.Entities;
-using Acme.Hello.Platform.Profiles.Interfaces.REST.Resources;
+using Acme.Hello.Platform.Profiles.Interfaces.Rest.Resources;
 
-namespace Acme.Hello.Platform.Profiles.Interfaces.REST.Assemblers;
+namespace Acme.Hello.Platform.Profiles.Interfaces.Rest.Assemblers;
 
 /// <summary>
 /// Assembler class to convert a GreetDeveloperRequest into a Developer entity.

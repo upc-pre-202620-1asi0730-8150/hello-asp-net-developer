@@ -1,4 +1,4 @@
-namespace Acme.Hello.Platform.Profiles.Interfaces.REST.Resources;
+namespace Acme.Hello.Platform.Profiles.Interfaces.Rest.Resources;
 
 /// <summary>
 /// A record representing a request to greet a developer.
