@@ -10,12 +10,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 - `PersonName` Value Object in domain model to encapsulate name behavior, validation, and trimming.
 - `IGreetingCounter` domain service and `GreetingCounter` thread-safe singleton implementation for tracking greeting metrics.
+- `GreetingEndpoints` extension class in REST interface layer to modularize Minimal API route mappings.
+- HTTP request specifications in `Acme.Hello.Platform.http` for greeting API endpoints.
 
 ### Changed
 - Refactored `Developer` entity to encapsulate `PersonName` Value Object.
 - Updated `DeveloperAssembler` to leverage `PersonName` for name validation and creation.
 - Decoupled greeting count tracking from `Developer` entity and injected `IGreetingCounter` domain service in Minimal API endpoints.
 - Simplified `GetGreetingCountResponse` resource record by decoupling it from domain entities.
+- Modularized endpoint route registrations from `Program.cs` into `MapGreetingEndpoints` extension method.
+- Cleaned up XML route comments in interface layer.
 
 ## [1.1.0] - 2026-08-19
 
