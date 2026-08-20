@@ -1,7 +1,7 @@
 @startuml
 
 package "Acme.Hello.Platform.Profiles.Domain.Model.ValueObjects" {
-  class PersonName <<record>> {
+  class PersonName <<readonly record struct>> {
     +string FirstName
     +string LastName
     +string FullName
