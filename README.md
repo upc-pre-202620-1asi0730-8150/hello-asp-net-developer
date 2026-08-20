@@ -20,7 +20,7 @@ The class diagram for this project can be found in the [docs/class-diagram.puml]
 ## Prerequisites
 
 - .NET 10 SDK
-- Swashbuckle.AspNetCore (for API documentation)
+- Scalar.AspNetCore (for API documentation)
 
 ## Getting Started
 
@@ -37,4 +37,8 @@ The class diagram for this project can be found in the [docs/class-diagram.puml]
 
    ```bash
    dotnet run
+   ```
+4. Run the tests:
+   ```bash
+   dotnet test
    ```
