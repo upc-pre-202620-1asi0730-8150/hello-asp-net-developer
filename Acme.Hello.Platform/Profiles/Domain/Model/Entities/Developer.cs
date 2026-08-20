@@ -1,4 +1,4 @@
-namespace Acme.Hello.Platform.Generic.Domain.Model.Entities;
+namespace Acme.Hello.Platform.Profiles.Domain.Model.Entities;
 
 /// <summary>
 /// Represents a Developer entity in the domain model with an auto-generated ID
