@@ -40,19 +40,16 @@ public class GreetingCounterTests
         var counter = new GreetingCounter();
         const int numberOfThreads = 10;
         const int incrementsPerThread = 1000;
-        var tasks = new Task[numberOfThreads];
 
         // Act
-        for (int i = 0; i < numberOfThreads; i++)
-        {
-            tasks[i] = Task.Run(() =>
+        Task[] tasks = [.. Enumerable.Range(0, numberOfThreads)
+            .Select(_ => Task.Run(() =>
             {
                 for (int j = 0; j < incrementsPerThread; j++)
                 {
                     counter.Increment();
                 }
-            });
-        }
+            }))];
 
         Task.WaitAll(tasks);
 
