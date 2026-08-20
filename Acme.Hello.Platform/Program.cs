@@ -1,4 +1,3 @@
-using Acme.Hello.Platform.Profiles.Domain.Model.Entities;
 using Acme.Hello.Platform.Profiles.Interfaces.Rest.Assemblers;
 using Acme.Hello.Platform.Profiles.Interfaces.Rest.Resources;
 
@@ -26,28 +25,27 @@ if (app.Environment.IsDevelopment())
 // /// </summary>
 // /// <param name="firstName">The optional first name of the developer.</param>
 // /// <param name="lastName">The optional last name of the developer.</param>
-// /// <returns>An IActionResult containing a GreetDeveloperResponse with a 200 OK status.</returns>
-app.MapGet("/greetings", (string? firstName, string? lastName) =>
+// /// <returns>An IActionResult containing a GetGreetingCountResponse with a 200 OK status.</returns>
+app.MapGet("/api/v1/greetings", () =>
     {
-        var developer = !string.IsNullOrWhiteSpace(firstName) && !string.IsNullOrWhiteSpace(lastName)
-            ? new Developer(firstName, lastName)
-            : null;
-        var response = GreetDeveloperAssembler.ToResponseFromEntity(developer);
+        var response = new GetGreetingCountResponse();
         return Results.Ok(response);
     })
-    .WithName("GetGreeting");
+    .WithName("GetGreetingCount");
     
 // <summary>
 // /// Defines the POST endpoint for creating a greeting.
 // /// </summary>
 // /// <param name="request">The GreetDeveloperRequest containing first and last names.</param>
 // /// <returns>An IActionResult containing a GreetDeveloperResponse with a 201 Created status.</returns>
-app.MapPost("/greetings", (GreetDeveloperRequest request) =>
+app.MapPost("/api/v1/greetings", (GreetDeveloperRequest request) =>
     {
         var developer = DeveloperAssembler.ToEntityFromRequest(request);
+        developer?.IncrementGreetingCount();
         var response = GreetDeveloperAssembler.ToResponseFromEntity(developer);
-        return Results.Created("/greetings", response);
+        return Results.Created("/api/v1/greetings", response);
     })
-    .WithName("CreateGreeting");
+    .WithName("CreateGreeting")
+    .Produces<GreetDeveloperResponse>(StatusCodes.Status201Created);
 
 app.Run();
