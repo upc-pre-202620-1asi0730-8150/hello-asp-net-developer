@@ -1,3 +1,4 @@
+using Acme.Hello.Platform.Profiles.Domain.Services;
 using Acme.Hello.Platform.Profiles.Interfaces.Rest.Assemblers;
 using Acme.Hello.Platform.Profiles.Interfaces.Rest.Resources;
 
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<IGreetingCounter, GreetingCounter>();
 
 var app = builder.Build();
 
@@ -26,9 +28,9 @@ if (app.Environment.IsDevelopment())
 // /// <param name="firstName">The optional first name of the developer.</param>
 // /// <param name="lastName">The optional last name of the developer.</param>
 // /// <returns>An IActionResult containing a GetGreetingCountResponse with a 200 OK status.</returns>
-app.MapGet("/api/v1/greetings", () =>
+app.MapGet("/api/v1/greetings", (IGreetingCounter greetingCounter) =>
     {
-        var response = new GetGreetingCountResponse();
+        var response = new GetGreetingCountResponse(greetingCounter.Count);
         return Results.Ok(response);
     })
     .WithName("GetGreetingCount")
@@ -39,10 +41,13 @@ app.MapGet("/api/v1/greetings", () =>
 // /// </summary>
 // /// <param name="request">The GreetDeveloperRequest containing first and last names.</param>
 // /// <returns>An IActionResult containing a GreetDeveloperResponse with a 201 Created status.</returns>
-app.MapPost("/api/v1/greetings", (GreetDeveloperRequest request) =>
+app.MapPost("/api/v1/greetings", (GreetDeveloperRequest request, IGreetingCounter greetingCounter) =>
     {
         var developer = DeveloperAssembler.ToEntityFromRequest(request);
-        developer?.IncrementGreetingCount();
+        if (developer != null)
+        {
+            greetingCounter.Increment();
+        }
         var response = GreetDeveloperAssembler.ToResponseFromEntity(developer);
         return Results.Created("/api/v1/greetings", response);
     })

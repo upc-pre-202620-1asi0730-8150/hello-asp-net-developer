@@ -17,11 +17,6 @@ public class Developer
     /// Gets the developer's person name value object.
     /// </summary>
     public PersonName Name { get; }
-
-    /// <summary>
-    /// Gets or sets the number of greetings made to any developer. 
-    /// </summary>
-    public static int GreetingCount { get; private set; } = 0;
     
     /// <summary>
     /// Initializes a new instance of the Developer class with a PersonName value object.
@@ -52,9 +47,4 @@ public class Developer
     /// </summary>
     /// <returns>True if any name is empty, false otherwise.</returns>
     public bool IsAnyNameEmpty() => Name.IsAnyNameEmpty();
-    
-    /// <summary>
-    /// Increments the greeting count for this developer.
-    /// </summary>
-    public void IncrementGreetingCount() => GreetingCount++;
 }

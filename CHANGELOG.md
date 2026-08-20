@@ -9,10 +9,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `PersonName` Value Object in domain model to encapsulate name behavior, validation, and trimming.
+- `IGreetingCounter` domain service and `GreetingCounter` thread-safe singleton implementation for tracking greeting metrics.
 
 ### Changed
 - Refactored `Developer` entity to encapsulate `PersonName` Value Object.
 - Updated `DeveloperAssembler` to leverage `PersonName` for name validation and creation.
+- Decoupled greeting count tracking from `Developer` entity and injected `IGreetingCounter` domain service in Minimal API endpoints.
+- Simplified `GetGreetingCountResponse` resource record by decoupling it from domain entities.
 
 ## [1.1.0] - 2026-08-19
 
