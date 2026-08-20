@@ -6,17 +6,36 @@ namespace Acme.Hello.Platform.Profiles.Domain.Model.ValueObjects;
 /// </summary>
 /// <param name="FirstName">The person's first name.</param>
 /// <param name="LastName">The person's last name.</param>
-public record PersonName(string FirstName, string LastName)
+public readonly record struct PersonName
 {
     /// <summary>
     /// Gets the first name, trimmed of whitespace.
     /// </summary>
-    public string FirstName { get; } = string.IsNullOrWhiteSpace(FirstName) ? "" : FirstName.Trim();
+    public string FirstName
+    {
+        get => field ?? string.Empty;
+        init => field = string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim();
+    }
 
     /// <summary>
     /// Gets the last name, trimmed of whitespace.
     /// </summary>
-    public string LastName { get; } = string.IsNullOrWhiteSpace(LastName) ? "" : LastName.Trim();
+    public string LastName
+    {
+        get => field ?? string.Empty;
+        init => field = string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim();
+    }
+
+    /// <summary>
+    /// Initializes a new instance of PersonName with first and last names.
+    /// </summary>
+    /// <param name="firstName">The person's first name.</param>
+    /// <param name="lastName">The person's last name.</param>
+    public PersonName(string firstName, string lastName)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+    }
 
     /// <summary>
     /// Initializes a new instance of PersonName with empty names.
