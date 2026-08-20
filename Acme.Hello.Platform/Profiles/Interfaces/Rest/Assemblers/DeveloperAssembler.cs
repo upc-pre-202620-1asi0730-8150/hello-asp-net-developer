@@ -16,19 +16,10 @@ public static class DeveloperAssembler
     /// </summary>
     /// <param name="request">The request containing the first and last names may be null.</param>
     /// <returns>A Developer entity if the request is valid, null otherwise.</returns>
-    public static Developer? ToEntityFromRequest(GreetDeveloperRequest? request)
-    {
-        if (request == null)
-        {
-            return null;
-        }
-
-        var personName = new PersonName(request.FirstName, request.LastName);
-        if (personName.IsAnyNameEmpty())
-        {
-            return null;
-        }
-
-        return new Developer(personName);
-    }
+    public static Developer? ToEntityFromRequest(GreetDeveloperRequest? request) =>
+        request is { FirstName: var first, LastName: var last } &&
+        new PersonName(first, last) is var personName &&
+        !personName.IsAnyNameEmpty()
+            ? new Developer(personName)
+            : null;
 }
