@@ -6,7 +6,8 @@ namespace Acme.Hello.Platform.Profiles.Domain.Model.Entities;
 /// Represents a Developer entity in the domain model with an auto-generated ID
 /// and encapsulated name information.
 /// </summary>
-public class Developer
+/// <param name="name">The developer's person name value object.</param>
+public class Developer(PersonName name)
 {
     /// <summary>
     /// Gets the unique identifier for the developer.
@@ -16,16 +17,7 @@ public class Developer
     /// <summary>
     /// Gets the developer's person name value object.
     /// </summary>
-    public PersonName Name { get; }
-    
-    /// <summary>
-    /// Initializes a new instance of the Developer class with a PersonName value object.
-    /// </summary>
-    /// <param name="name">The developer's person name.</param>
-    public Developer(PersonName name)
-    {
-        Name = name;
-    }
+    public PersonName Name { get; } = name;
 
     /// <summary>
     /// Initializes a new instance of the Developer class with first and last names.

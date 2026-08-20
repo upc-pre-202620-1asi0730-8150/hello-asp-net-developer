@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Changed
+- Modernized `Developer` entity using C# primary constructor syntax.
 - Modernized `PersonName` value object into a `readonly record struct` utilizing the C# 14 `field` contextual keyword in property accessors.
 
 ## [1.1.0] - 2026-08-20
