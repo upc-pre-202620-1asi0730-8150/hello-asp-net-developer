@@ -32,6 +32,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Updated SDK rollForward policy, language version to C# 14, and package dependencies for .NET 10.
 - Updated `docs/class-diagram.puml` with `Profiles` bounded context namespaces, `PersonName` Value Object, and `IGreetingCounter` service.
 - Synchronized `docs/user-stories.md` and `README.md` with `/api/v1/greetings` endpoint signatures and greeting metrics behavior.
+- Replaced `Swatchbuckle.AspNetCore` with `Scalar.AspNetCore` for OpenAPI annotations.
 
 ## [1.0.0] - 2026-08-19
 
