@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.0] - 2026-08-20
 
 ### Added
+- Unit test suite project `Acme.Hello.Platform.Tests` covering domain layer behavior (`PersonName` Value Object, `Developer` Entity, and `GreetingCounter` Domain Service).
 - `PersonName` Value Object in domain model to encapsulate name behavior, validation, and trimming.
 - `IGreetingCounter` domain service and `GreetingCounter` thread-safe singleton implementation for tracking greeting metrics.
 - `GetGreetingCountResponse` resource record to represent greeting count in REST interface.
