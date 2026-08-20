@@ -25,7 +25,7 @@ public static class GreetingEndpoints
                 return Results.Ok(response);
             })
             .WithName("GetGreetingCount")
-            .Produces<GetGreetingCountResponse>(StatusCodes.Status200OK)
+            .Produces<GetGreetingCountResponse>()
             .WithSummary("Retrieves the count of greetings made to any developer.");
 
         group.MapPost("", (GreetDeveloperRequest request, IGreetingCounter greetingCounter) =>

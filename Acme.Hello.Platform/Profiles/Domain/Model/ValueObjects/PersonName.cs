@@ -4,26 +4,24 @@ namespace Acme.Hello.Platform.Profiles.Domain.Model.ValueObjects;
 /// Represents a person's name as a value object in the domain model.
 /// Encapsulates first and last names with trimming and formatting behavior.
 /// </summary>
-/// <param name="FirstName">The person's first name.</param>
-/// <param name="LastName">The person's last name.</param>
 public readonly record struct PersonName
 {
     /// <summary>
     /// Gets the first name, trimmed of whitespace.
     /// </summary>
-    public string FirstName
+    public string? FirstName
     {
         get => field ?? string.Empty;
-        init => field = string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim();
+        private init => field = string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim();
     }
 
     /// <summary>
     /// Gets the last name, trimmed of whitespace.
     /// </summary>
-    public string LastName
+    public string? LastName
     {
         get => field ?? string.Empty;
-        init => field = string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim();
+        private init => field = string.IsNullOrWhiteSpace(value) ? string.Empty : value.Trim();
     }
 
     /// <summary>
@@ -31,7 +29,7 @@ public readonly record struct PersonName
     /// </summary>
     /// <param name="firstName">The person's first name.</param>
     /// <param name="lastName">The person's last name.</param>
-    public PersonName(string firstName, string lastName)
+    public PersonName(string? firstName, string? lastName)
     {
         FirstName = firstName;
         LastName = lastName;

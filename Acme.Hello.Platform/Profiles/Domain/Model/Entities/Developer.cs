@@ -22,8 +22,8 @@ public class Developer(PersonName name)
     /// <summary>
     /// Initializes a new instance of the Developer class with first and last names.
     /// </summary>
-    /// <param name="firstName">The developer's first name, may be null or contain whitespace.</param>
-    /// <param name="lastName">The developer's last name, may be null or contain whitespace.</param>
+    /// <param name="firstName">The developer's first name, which may be null or contain whitespace.</param>
+    /// <param name="lastName">The developer's last name, which may be null or contain whitespace.</param>
     public Developer(string firstName, string lastName) : this(new PersonName(firstName, lastName))
     {
     }

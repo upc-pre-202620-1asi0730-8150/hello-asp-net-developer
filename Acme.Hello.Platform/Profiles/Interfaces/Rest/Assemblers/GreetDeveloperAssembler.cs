@@ -14,11 +14,11 @@ public static class GreetDeveloperAssembler
     /// Returns an anonymous greeting if the developer is null or has empty names,
     /// otherwise returns a personalized greeting with ID and full name.
     /// </summary>
-    /// <param name="developer">The developer entity to convert, may be null.</param>
+    /// <param name="developer">The developer entity to convert, which may be null.</param>
     /// <returns>A GreetDeveloperResponse with appropriate greeting details.</returns>
     public static GreetDeveloperResponse ToResponseFromEntity(Developer? developer) =>
         developer is not null && !developer.IsAnyNameEmpty()
-            ? new GreetDeveloperResponse(developer.Id, developer.GetFullName(),
-                $"Congrats {developer.GetFullName()}! You are an ASP.NET Developer")
+            ? new GreetDeveloperResponse( developer.Id, developer.GetFullName(),
+                $"Congrats {developer.GetFullName()}! You are an ASP.NET Developer" )
             : new GreetDeveloperResponse("Welcome Anonymous ASP.NET Developer");
 }
