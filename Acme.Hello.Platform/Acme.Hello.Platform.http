@@ -1,6 +1,19 @@
 @Acme.Hello.Platform_HostAddress = http://localhost:5195
 
-GET {{Acme.Hello.Platform_HostAddress}}/weatherforecast/
+### Get greeting count
+GET {{Acme.Hello.Platform_HostAddress}}/api/v1/greetings
 Accept: application/json
+
+###
+
+### Create greeting for a developer
+POST {{Acme.Hello.Platform_HostAddress}}/api/v1/greetings
+Content-Type: application/json
+Accept: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe"
+}
 
 ###

@@ -1,6 +1,7 @@
-using Acme.Hello.Platform.Generic.Domain.Model.Entities;
-using Acme.Hello.Platform.Generic.Interfaces.REST.Assemblers;
-using Acme.Hello.Platform.Generic.Interfaces.REST.Resources;
+using Acme.Hello.Platform.Profiles.Domain.Services;
+using Acme.Hello.Platform.Profiles.Domain.Services.Internal;
+using Acme.Hello.Platform.Profiles.Interfaces.Rest;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,46 +9,22 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSingleton<IGreetingCounter, GreetingCounter>();
 
 var app = builder.Build();
-
-app.UseSwagger();
-app.UseSwaggerUI();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
+    app.MapScalarApiReference(options =>
+    {
+        options.WithTitle("ACME Hello ASP.NET Core API")
+               .WithTheme(ScalarTheme.DeepSpace)
+               .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient);
+    });
 }
 
-// <summary>
-// /// Defines the GET endpoint for retrieving a greeting.
-// /// </summary>
-// /// <param name="firstName">The optional first name of the developer.</param>
-// /// <param name="lastName">The optional last name of the developer.</param>
-// /// <returns>An IActionResult containing a GreetDeveloperResponse with a 200 OK status.</returns>
-app.MapGet("/greetings", (string? firstName, string? lastName) =>
-    {
-        var developer = !string.IsNullOrWhiteSpace(firstName) && !string.IsNullOrWhiteSpace(lastName)
-            ? new Developer(firstName, lastName)
-            : null;
-        var response = GreetDeveloperAssembler.ToResponseFromEntity(developer);
-        return Results.Ok(response);
-    })
-    .WithName("GetGreeting");
-    
-// <summary>
-// /// Defines the POST endpoint for creating a greeting.
-// /// </summary>
-// /// <param name="request">The GreetDeveloperRequest containing first and last names.</param>
-// /// <returns>An IActionResult containing a GreetDeveloperResponse with a 201 Created status.</returns>
-app.MapPost("/greetings", (GreetDeveloperRequest request) =>
-    {
-        var developer = DeveloperAssembler.ToEntityFromRequest(request);
-        var response = GreetDeveloperAssembler.ToResponseFromEntity(developer);
-        return Results.Created("/greetings", response);
-    })
-    .WithName("CreateGreeting");
+app.MapGreetingEndpoints();
 
 app.Run();

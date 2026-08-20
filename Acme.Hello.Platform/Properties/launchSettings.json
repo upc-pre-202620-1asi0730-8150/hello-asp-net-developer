@@ -9,7 +9,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "launchUrl": "http://localhost:5195/swagger/index.html"
+      "launchUrl": "http://localhost:5195/scalar/v1"
     },
     "https": {
       "commandName": "Project",
